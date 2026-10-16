@@ -1,6 +1,6 @@
 
 SET SQLFORMAT csv
-
+SET FEEDBACK OFF
 
 SELECT *
 FROM salaries_sf
