@@ -1,0 +1,10 @@
+
+SET SQLFORMAT csv
+
+
+SELECT *
+FROM salaries_sf
+ORDER BY basepay DESC
+FETCH FIRST .2 PERCENT ROWS ONLY;
+
+EXIT
