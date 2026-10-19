@@ -1,0 +1,7 @@
+DROP TABLE students;
+
+SELECT * FROM students;
+
+EXIT
+
+-- DROP TABLE students CASCADE CONSTRAINTS;
