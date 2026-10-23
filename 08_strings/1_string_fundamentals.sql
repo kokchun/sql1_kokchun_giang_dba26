@@ -14,7 +14,7 @@ SELECT
     LENGTH(s)
 FROM (SELECT 'OraCle sQl' AS s);
 
-
+-- substrings extraction
 SELECT 
     s,
     SUBSTR(s, 1,6) AS first_six,
@@ -23,11 +23,20 @@ SELECT
 FROM (SELECT 'Oracle SQL on Oracle26ai' AS s);
 
 
--- INSTR
+-- INSTR - searching
 SELECT
     INSTR('idempotent operation', 'operation') AS first_occurence,
     INSTR('banana', 'an',1,2) AS second_occ,
     SUBSTR('cool@evilcorp.com', INSTR('cool@evilcorp.com', '@')+1) AS domain;
+
+-- clean a string
+SELECT 
+    s,
+    TRIM(s),
+    LTRIM(s),
+    RTRIM(s),
+    RTRIM(INITCAP(REPLACE(TRIM(s), '    ', ' ')), 'x') AS cleaned
+FROM (SELECT '         HellU    ORaCleX      ' AS s);
 
 
 
