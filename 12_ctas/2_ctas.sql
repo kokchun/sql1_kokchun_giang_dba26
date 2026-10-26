@@ -18,4 +18,48 @@ FROM (SELECT DISTINCT product, product_price FROM orders_flat);
 
 SELECT * FROM products;
 
+
+CREATE TABLE IF NOT EXISTS orders AS
+SELECT
+    DISTINCT f.order_id,
+    f.order_date,
+    c.customer_id
+FROM orders_flat f
+JOIN customers c ON c.customer_name = f.customer_name
+                AND c.customer_city = f.customer_city;
+
+SELECT * FROM orders;
+
+
+CREATE TABLE IF NOT EXISTS orderlines AS
+SELECT
+    f.order_id,
+    ROW_NUMBER() OVER (PARTITION BY f.order_id ORDER BY p.product_id) AS line_no, 
+    p.product_id,
+    f.qty
+FROM orders_flat f
+JOIN products p ON p.product_name = f.product
+                AND p.product_price = f.product_price;
+
+SELECT * FROM orderlines;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 EXIT
